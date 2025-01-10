@@ -5,11 +5,10 @@ class ZippoService {
   static final ZippoService instance = ZippoService._internal();
   ZippoService._internal();
 
-  final url =
-      "https://api.zippopotam.us/es/08907";
+  final url = "https://api.zippopotam.us/es/";
 
-  Future<Zippo> fetchDataFromApi() async {
-    http.Response response = await http.get(Uri.parse(url));
+  Future<Zippo> fetchDataFromApi(String code) async {
+    http.Response response = await http.get(Uri.parse(url + code));
     final zippopotam = zippoFromJson(response.body);
     return zippopotam;
   }
